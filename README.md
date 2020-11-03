@@ -1,2 +1,1 @@
-# hackernews-clone
-HackerNews Clone
+#HackerNews Next.js Clone
