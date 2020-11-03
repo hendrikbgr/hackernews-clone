@@ -28,6 +28,11 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
+    ],
+    "/feed/new": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/feed/new.js"
     ]
   },
   "ampFirstPages": []
