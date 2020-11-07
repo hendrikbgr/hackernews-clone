@@ -3,7 +3,7 @@
   <div>
     <h1>HackerNews Clone</h1>
     <h3>Powered by Next.js</h3>
-    <a href="#" target="_blank">Demo</a>
+    <a href="https://hackernews-clone-steel.vercel.app/" target="_blank">Demo</a>
   </div>
 </div>
 
