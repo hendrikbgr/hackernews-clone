@@ -1,0 +1,22 @@
+{
+  "name": "learn-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --fix .",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+  },
+  "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
+    "@emotion/core": "^10.1.1",
+    "@emotion/styled": "^10.0.27",
+    "emotion-theming": "^10.0.27",
+    "isomorphic-unfetch": "^3.1.0",
+    "next": "^10.0.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
