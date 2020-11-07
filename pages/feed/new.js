@@ -1,5 +1,4 @@
 import Layout from '../../components/layout';
-import Post from '../../components/post/post';
 import { Box, Grid, Text, Link } from '@chakra-ui/core';
 import fetch from 'isomorphic-unfetch';
 
