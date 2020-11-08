@@ -44,3 +44,4 @@ npm run dev
 ## Acknowledgments
 
 -   isomorphic-unfetch
+-   https://github.com/cheeaun/node-hnapi Unoffical HackerNews API
