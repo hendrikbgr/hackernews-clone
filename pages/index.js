@@ -23,7 +23,7 @@ export default function Home() {
                         <Image
                             src="../logo_red.png"
                             alt="HackerNews Custom Logo"
-                            h="120px"
+                            mh="120px"
                             m="0 auto"
                             display="block"
                         />
