@@ -12,13 +12,23 @@ const styling = {
 export default function Home() {
     return (
         <div className="home" style={styling}>
-            <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" flexDirection="column">
+            <Box
+                minH="100vh"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                flexDirection="column">
                 <Head>
                     <title>HackerNews Next.js Clone</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <Navbar />
-                <Box flex="1" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+                <Box
+                    flex="1"
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
+                    alignItems="center">
                     <Box w="100%">
                         <Image
                             src="../logo_red.png"
