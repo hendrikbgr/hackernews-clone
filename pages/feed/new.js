@@ -1,10 +1,15 @@
 import Layout from '../../components/layout';
+import Head from 'next/head';
 import { Box, Grid, Text, Link } from '@chakra-ui/core';
 import fetch from 'isomorphic-unfetch';
 
 function New(props) {
     return (
         <>
+            <Head>
+                <title>New - HackerNews Next.js Clone</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <Layout>
                 <Grid templateColumns={{ xs: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={6}>
                     {props.data.map((data) => (
