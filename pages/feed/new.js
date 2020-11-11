@@ -1,9 +1,9 @@
 import Layout from '../../components/layout';
 import Head from 'next/head';
 import { Box, Grid, Text, Link } from '@chakra-ui/core';
-import fetch from 'isomorphic-unfetch';
+import React from 'react';
 
-function New(props) {
+function New({ data }) {
     return (
         <>
             <Head>
@@ -12,8 +12,14 @@ function New(props) {
             </Head>
             <Layout>
                 <Grid templateColumns={{ xs: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={6}>
-                    {props.data.map((data) => (
-                        <Box h="250px" w="auto" bg="#ffe8ea" borderRadius="10px" pos="relative">
+                    {data.map((data) => (
+                        <Box
+                            h="250px"
+                            w="auto"
+                            bg="#ffe8ea"
+                            borderRadius="10px"
+                            pos="relative"
+                            key={data.id}>
                             <Box m="20px">
                                 <Link
                                     color="#690c14"
@@ -35,12 +41,15 @@ function New(props) {
     );
 }
 
-New.getInitialProps = async function () {
-    const res = await fetch('https://api.hackerwebapp.com/news?page=2');
+export async function getStaticProps() {
+    const res = await fetch('https://api.hackerwebapp.com/news?page=1');
     const data = await res.json();
+
     return {
-        data
+        props: {
+            data
+        }
     };
-};
+}
 
 export default New;
