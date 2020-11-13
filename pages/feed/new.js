@@ -3,19 +3,32 @@ import Head from 'next/head';
 import { Box, Grid, Text, Link } from '@chakra-ui/core';
 import React, { useState, useEffect } from 'react';
 
-export default function New(props) {
-    const [post, setTitle] = useState(null);
+export default function New() {
+    const [post, setData] = useState(null);
 
     async function fetchPostData() {
         const res = await fetch('https://api.hackerwebapp.com/news?page=1');
-        setTitle(await res.json());
+        setData(await res.json());
     }
     useEffect(() => {
-        fetchPostData(props.title);
-    }, [props.title]);
+        fetchPostData();
+    });
 
     if (!post) {
-        return 'loading...';
+        return (
+            <>
+                <Box
+                    flex="1"
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
+                    alignItems="center">
+                    <Text color="#ff4545" fontSize="35px" fontWeight="bolder" mt="20vh">
+                        Data is Loading...
+                    </Text>
+                </Box>
+            </>
+        );
     }
 
     return (
