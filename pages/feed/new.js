@@ -1,9 +1,23 @@
 import Layout from '../../components/layout';
 import Head from 'next/head';
 import { Box, Grid, Text, Link } from '@chakra-ui/core';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function New({ data }) {
+export default function New(props) {
+    const [post, setTitle] = useState(null);
+
+    async function fetchPostData() {
+        const res = await fetch('https://api.hackerwebapp.com/news?page=1');
+        setTitle(await res.json());
+    }
+    useEffect(() => {
+        fetchPostData(props.title);
+    }, [props.title]);
+
+    if (!post) {
+        return 'loading...';
+    }
+
     return (
         <>
             <Head>
@@ -12,7 +26,7 @@ function New({ data }) {
             </Head>
             <Layout>
                 <Grid templateColumns={{ xs: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={6}>
-                    {data.map((data) => (
+                    {post.map((data) => (
                         <Box
                             h="250px"
                             w="auto"
@@ -26,7 +40,8 @@ function New({ data }) {
                                     fontWeight="bold"
                                     fontSize="1.3em"
                                     lineHeight="25px"
-                                    href={data.url}>
+                                    href={data.url}
+                                    isExternal>
                                     {data.title}
                                 </Link>
                                 <Text pos="absolute" bottom="2">
@@ -40,16 +55,3 @@ function New({ data }) {
         </>
     );
 }
-
-export async function getStaticProps() {
-    const res = await fetch('https://api.hackerwebapp.com/news?page=1');
-    const data = await res.json();
-
-    return {
-        props: {
-            data
-        }
-    };
-}
-
-export default New;
