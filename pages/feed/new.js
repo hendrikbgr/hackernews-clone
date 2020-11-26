@@ -1,20 +1,21 @@
 import Layout from '../../components/layout';
 import Head from 'next/head';
-import { Box, Grid, Text, Link } from '@chakra-ui/core';
+import { Box, Grid, Text } from '@chakra-ui/core';
 import React, { useState, useEffect } from 'react';
+import StoryCard from '../../components/story-card';
 
 export default function New() {
-    const [post, setData] = useState(null);
+    const [newStoriesIds, setNewStoriesIds] = useState(null);
 
     async function fetchPostData() {
-        const res = await fetch('https://api.hackerwebapp.com/news?page=1');
-        setData(await res.json());
+        const res = await fetch('https://hacker-news.firebaseio.com/v0/newstories.json');
+        setNewStoriesIds(await res.json());
     }
     useEffect(() => {
         fetchPostData();
-    });
+    }, []);
 
-    if (!post) {
+    if (!newStoriesIds) {
         return (
             <>
                 <Box
@@ -38,30 +39,14 @@ export default function New() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-                <Grid templateColumns={{ xs: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={6}>
-                    {post.map((data) => (
-                        <Box
-                            h="250px"
-                            w="auto"
-                            bg="#ffe8ea"
-                            borderRadius="10px"
-                            pos="relative"
-                            key={data.id}>
-                            <Box m="20px">
-                                <Link
-                                    color="#690c14"
-                                    fontWeight="bold"
-                                    fontSize="1.3em"
-                                    lineHeight="25px"
-                                    href={data.url}
-                                    isExternal>
-                                    {data.title}
-                                </Link>
-                                <Text pos="absolute" bottom="2">
-                                    posted {data.time_ago} by {data.user}
-                                </Text>
-                            </Box>
-                        </Box>
+                <Grid
+                    templateColumns={{
+                        xs: 'repeat(1, minmax(0, 1fr))',
+                        md: 'repeat(3, minmax(0, 1fr))'
+                    }}
+                    gap={6}>
+                    {newStoriesIds.map((StoryId) => (
+                        <StoryCard id={StoryId} key={StoryId} />
                     ))}
                 </Grid>
             </Layout>
