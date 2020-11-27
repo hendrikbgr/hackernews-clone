@@ -1,8 +1,9 @@
 import Layout from '../../components/layout';
 import Head from 'next/head';
-import { Box, Grid, Text } from '@chakra-ui/core';
+import { Grid } from '@chakra-ui/core';
 import React, { useState, useEffect } from 'react';
 import StoryCard from '../../components/story-card';
+import DataLoading from '../../components/data-loading';
 
 export default function New() {
     const [newStoriesIds, setNewStoriesIds] = useState(null);
@@ -16,20 +17,7 @@ export default function New() {
     }, []);
 
     if (!newStoriesIds) {
-        return (
-            <>
-                <Box
-                    flex="1"
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="center"
-                    alignItems="center">
-                    <Text color="#ff4545" fontSize="35px" fontWeight="bolder" mt="20vh">
-                        Data is Loading...
-                    </Text>
-                </Box>
-            </>
-        );
+        return <DataLoading />;
     }
 
     return (
