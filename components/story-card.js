@@ -1,4 +1,4 @@
-import { Box, Link, Text } from '@chakra-ui/core';
+import { Box, Link, Text, Spinner } from '@chakra-ui/core';
 import React, { useEffect, useState } from 'react';
 
 const StoryCard = ({ id }) => {
@@ -36,7 +36,7 @@ const StoryCard = ({ id }) => {
                             lineHeight="25px"
                             href={story.url}
                             isExternal>
-                            <Text>{story.title}</Text>
+                            {story.title}
                         </Link>
                         <Text pos="absolute" bottom="2">
                             posted {new Date(story.time * 1000).toLocaleDateString()} by {story.by}
@@ -44,7 +44,19 @@ const StoryCard = ({ id }) => {
                     </>
                 )}
                 {hasError && 'Oops, something went wrong'}
-                {isLoading && 'Loading'}
+                {isLoading && (
+                    <>
+                        <Spinner
+                            thickness="4px"
+                            speed="0.65s"
+                            emptyColor="gray.200"
+                            color="#ff4545"
+                            size="xl"
+                            display="block"
+                            m="100px auto"
+                        />
+                    </>
+                )}
             </Box>
         </Box>
     );
