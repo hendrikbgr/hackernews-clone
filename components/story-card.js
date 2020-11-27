@@ -1,5 +1,6 @@
 import { Box, Link, Text, Spinner } from '@chakra-ui/core';
 import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 
 const StoryCard = ({ id }) => {
     const [story, setStory] = useState(null);
@@ -39,7 +40,7 @@ const StoryCard = ({ id }) => {
                             {story.title}
                         </Link>
                         <Text pos="absolute" bottom="2">
-                            posted {new Date(story.time * 1000).toLocaleDateString()} by {story.by}
+                            posted {moment(new Date(story.time * 1000)).fromNow()} by {story.by}
                         </Text>
                     </>
                 )}
