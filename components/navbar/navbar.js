@@ -13,6 +13,18 @@ export default function Navbar({ children }) {
                 </Link>
                 <Link
                     mr="10px"
+                    href="/feed/top"
+                    _hover={{ textDecoration: 'none', borderBottom: '3px solid white' }}>
+                    Top
+                </Link>
+                <Link
+                    mr="10px"
+                    href="/feed/best"
+                    _hover={{ textDecoration: 'none', borderBottom: '3px solid white' }}>
+                    Best
+                </Link>
+                <Link
+                    mr="10px"
                     href="/feed/new"
                     _hover={{ textDecoration: 'none', borderBottom: '3px solid white' }}>
                     New

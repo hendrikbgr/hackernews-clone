@@ -5,25 +5,25 @@ import React, { useState, useEffect } from 'react';
 import StoryCard from '../../components/story-card';
 import DataLoading from '../../components/data-loading';
 
-export default function New() {
-    const [newStoriesIds, setNewStoriesIds] = useState(null);
+export default function Top() {
+    const [topStoriesIds, setTopSoriesIds] = useState(null);
 
     async function fetchPostData() {
-        const res = await fetch('https://hacker-news.firebaseio.com/v0/newstories.json');
-        setNewStoriesIds(await res.json());
+        const res = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
+        setTopSoriesIds(await res.json());
     }
     useEffect(() => {
         fetchPostData();
     }, []);
 
-    if (!newStoriesIds) {
+    if (!topStoriesIds) {
         return <DataLoading />;
     }
 
     return (
         <>
             <Head>
-                <title>New - HackerNews Next.js Clone</title>
+                <title>Top - HackerNews Next.js Clone</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
@@ -33,7 +33,7 @@ export default function New() {
                         md: 'repeat(3, minmax(0, 1fr))'
                     }}
                     gap={6}>
-                    {newStoriesIds.map((StoryId) => (
+                    {topStoriesIds.map((StoryId) => (
                         <StoryCard id={StoryId} key={StoryId} />
                     ))}
                 </Grid>
