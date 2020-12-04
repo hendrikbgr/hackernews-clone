@@ -33,7 +33,7 @@ export default function Navbar({ children }) {
                     mr="10px"
                     href="/feed/new"
                     _hover={{ textDecoration: 'none', borderBottom: '3px solid white' }}
-                    borderBottom={router.pathname == '/new' ? '3px solid white' : ''}>
+                    borderBottom={router.pathname == '/feed/new' ? '3px solid white' : ''}>
                     New
                 </Link>
             </Box>
