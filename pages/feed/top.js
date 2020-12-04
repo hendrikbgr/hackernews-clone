@@ -19,7 +19,10 @@ export default function Top() {
     if (!topStoriesIds) {
         return <DataLoading />;
     }
-
+    const reloadData = (event) => {
+        event.preventDefault();
+        fetchPostData();
+    };
     return (
         <>
             <Head>
@@ -27,6 +30,9 @@ export default function Top() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
+                <Button backgroundColor="red" variant="outline" mb="4" onClick={reloadData}>
+                    Reload Data
+                </Button>
                 <Grid
                     templateColumns={{
                         xs: 'repeat(1, minmax(0, 1fr))',

@@ -1,6 +1,6 @@
 import Layout from '../../components/layout';
 import Head from 'next/head';
-import { Grid } from '@chakra-ui/core';
+import { Grid, Button } from '@chakra-ui/core';
 import React, { useState, useEffect } from 'react';
 import StoryCard from '../../components/story-card';
 import DataLoading from '../../components/data-loading';
@@ -19,7 +19,10 @@ export default function New() {
     if (!newStoriesIds) {
         return <DataLoading />;
     }
-
+    const reloadData = (event) => {
+        event.preventDefault();
+        fetchPostData();
+    };
     return (
         <>
             <Head>
@@ -27,6 +30,9 @@ export default function New() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
+                <Button backgroundColor="red" variant="outline" mb="4" onClick={reloadData}>
+                    Reload Data
+                </Button>
                 <Grid
                     templateColumns={{
                         xs: 'repeat(1, minmax(0, 1fr))',
