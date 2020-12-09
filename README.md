@@ -15,7 +15,7 @@ This is a HackerNews Clone made with Next.js
 
 🚀 Reads offical API data 🚀
 
-📌 Ver. 0.0.1 📌
+📌 Ver. 0.0.2 📌
 
 📱 Full Mobile Support 📱
 
@@ -41,6 +41,8 @@ Run the development server
 npm run dev
 ```
 
-## Acknowledgments
+Run the tests
 
--   https://github.com/cheeaun/node-hnapi Unoffical HackerNews API
+```
+npm run test
+```
