@@ -24,6 +24,7 @@ const StoryCard = ({ id }) => {
 
     const hasResults = !isLoading && !!story;
     const hasError = !isLoading && !story;
+    const postedFromNow = hasResults ? moment(new Date(story.time * 1000)).fromNow() : null;
 
     return (
         <Box h="250px" w="auto" bg="#ffe8ea" borderRadius="10px" pos="relative" key={id}>
@@ -40,7 +41,7 @@ const StoryCard = ({ id }) => {
                             {story.title}
                         </Link>
                         <Text pos="absolute" bottom="2">
-                            posted {moment(new Date(story.time * 1000)).fromNow()} by {story.by}
+                            posted {postedFromNow} by {story.by}
                         </Text>
                     </>
                 )}
