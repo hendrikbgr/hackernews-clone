@@ -1,47 +1,33 @@
 import { Box, Link, Text, Spinner } from '@chakra-ui/core';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import moment from 'moment';
+import { useQuery } from 'react-query';
 
 const StoryCard = ({ id }) => {
-    const [story, setStory] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(() => {
-        const fetchStoryData = async () => {
-            setIsLoading(true);
-            try {
-                const response = await fetch(
-                    `https://hacker-news.firebaseio.com/v0/item/${id}.json`
-                );
-                const data = await response.json();
-                setStory(data);
-            } catch (e) {
-                // empty catch
-            }
-            setIsLoading(false);
-        };
-        fetchStoryData();
-    }, [id]);
+    const { isLoading, hasError, data: storyData } = useQuery(['fecthStory', id], () =>
+        fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then((res) => res.json())
+    );
 
-    const hasResults = !isLoading && !!story;
-    const hasError = !isLoading && !story;
-    const postedFromNow = hasResults ? moment(new Date(story.time * 1000)).fromNow() : null;
+    [id];
+
+    const postedFromNow = storyData ? moment(new Date(storyData.time * 1000)).fromNow() : null;
 
     return (
         <Box h="250px" w="auto" bg="#ffe8ea" borderRadius="10px" pos="relative" key={id}>
             <Box m="20px">
-                {hasResults && (
+                {storyData && (
                     <>
                         <Link
                             color="#690c14"
                             fontWeight="bold"
                             fontSize="1.3em"
                             lineHeight="25px"
-                            href={story.url}
+                            href={storyData.url}
                             isExternal>
-                            {story.title}
+                            {storyData.title}
                         </Link>
                         <Text pos="absolute" bottom="2">
-                            posted {postedFromNow} by {story.by}
+                            posted {postedFromNow} by {storyData.by}
                         </Text>
                     </>
                 )}

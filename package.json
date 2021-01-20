@@ -18,7 +18,8 @@
     "moment": "^2.29.1",
     "next": "^10.0.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-query": "^3.5.16"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.28.1",
